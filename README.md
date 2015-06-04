@@ -17,8 +17,9 @@ That's my special way to tell that I'm lazy.
 ## Installing
 
 * clone this repo
+* copy `config_ex.toml` to `config.toml`
 * install deps
 * run `make serve`
-* access http://localhost:4000
+* access [localhost:4000](http://localhost:4000)
 
 Your blog will be available at the `www` directory.
