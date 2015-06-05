@@ -34,6 +34,9 @@ for fiel in files:
     }
     posts.append(full) # add post to list of posts
 
+if len(posts) < 1:
+    print('WARNING: no posts found.')
+
 try:
     shutil.rmtree('./www/') # clean files on www directory
 except Exception as e:
