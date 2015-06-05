@@ -9,7 +9,7 @@
 <div id="quote"><i>${info["description"]}</i></div>
 <br>
 % for post in posts:
-  <a href="/${post["file"]}/">>> ${post["title"]}</a><span> &middot; ${post["date"]}</span><br>
+    <b>>> </b><a href="/${post["file"]}/">${post["title"]}</a><span> &middot; ${post["date"]}</span><br>
 % endfor
 </body>
 </html>
