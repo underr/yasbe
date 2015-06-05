@@ -5,8 +5,14 @@ from distutils import dir_util
 from glob import glob
 from mako.template import Template
 
-with open("config.toml") as cc:
-    config = toml.loads(cc.read()) # config dict from TOML file
+try:
+    with open("config.toml") as cc:
+        config = toml.loads(cc.read()) # config dict from TOML file
+except Exception as e:
+    print("config.toml file not found, copying example config...")
+    shutil.copy('config_ex.toml', 'config.toml')
+    with open("config.toml") as cc:
+        config = toml.loads(cc.read())
 
 posts = []
 info = config["info"]
@@ -25,7 +31,7 @@ for fiel in files:
         "file": title,
         "date": f_date,
         "title": c_title
-    }   
+    }
     posts.append(full) # add post to list of posts
 
 try:
@@ -42,9 +48,9 @@ sorted_posts = sorted(posts, key=itemgetter('date'), reverse=True) # sort by dat
 template = Template(filename='./tmpl/homepage.html')
 rendered = template.render(info=info, posts=sorted_posts)
 # write homepage
-with codecs.open("./www/index.html", "w", "utf-8-sig") as temp:        
+with codecs.open("./www/index.html", "w", "utf-8-sig") as temp:
     temp.write(rendered)
-    
+
 # create each post
 for post in posts:
     pre = markdown(post["content"]) # preprocessed markdown
@@ -53,7 +59,7 @@ for post in posts:
     template = Template(filename='./tmpl/post.html') # an Mako's Template object
     rendered = template.render(content=pre, post=post, info=info) # a rendered post
     # write post
-    with codecs.open(p_path + "/index.html", "w", "utf-8-sig") as temp:        
+    with codecs.open(p_path + "/index.html", "w", "utf-8-sig") as temp:
         temp.write(rendered)
 
 print("Done!")
