@@ -1,6 +1,7 @@
 [info]
 title = "Yet Another Blog"
 description = "something something"
+theme = "dark"
 author = "me"
 contact = "me@tfwno.gf"
 footer = "Built with <a href=\"https://github.com/underr/yasbe\">YASBE</a>"
