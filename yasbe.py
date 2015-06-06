@@ -22,16 +22,11 @@ for fiel in files:
     content = open(fiel).read()
     ob = {} # init dict to be inserted after
     f = os.path.basename(fiel) # remove path
-    date =  f.split("-")[:3]
+    date =  f.split("-")[:3] # removes date from filename
     f_date = '-'.join(date)
-    title = f.replace(f_date, "")[1:].split('.')[0]
-    c_title = title[:1].upper() + title[1:].replace("-", " ")
-    full = {
-        "content": content,
-        "file": title,
-        "date": f_date,
-        "title": c_title
-    }
+    filename = f.replace(f_date, "")[1:].split('.')[0] # extracts filename from path
+    c_title = filename[:1].upper() + filename[1:].replace("-", " ") # creates a title from filename
+    full = {"content": content, "file": filename, "date": f_date, "title": c_title}
     posts.append(full) # add post to list of posts
 
 if len(posts) < 1:
@@ -46,15 +41,15 @@ os.mkdir("./www")
 os.mkdir("./www/static")
 dir_util.copy_tree("./static/", "./www/static")
 
-# create homepage
+# homepage creation
 sorted_posts = sorted(posts, key=itemgetter('date'), reverse=True) # sort by date
 template = Template(filename='./tmpl/homepage.html')
 rendered = template.render(info=info, posts=sorted_posts)
-# write homepage
+
 with codecs.open("./www/index.html", "w", "utf-8-sig") as temp:
     temp.write(rendered)
 
-# create each post
+# post creation
 for post in posts:
     pre = markdown(post["content"]) # preprocessed markdown
     p_path = './www/' + post["file"]
