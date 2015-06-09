@@ -25,7 +25,14 @@ for fiel in files:
     date =  f.split("-")[:3] # removes date from filename
     f_date = '-'.join(date)
     filename = f.replace(f_date, "")[1:].split('.')[0] # extracts filename from path
-    c_title = filename[:1].upper() + filename[1:].replace("-", " ") # creates a title from filename
+    # title mode, refer to config.toml
+    if info["title_mode"] == "first_only":
+        c_title = filename[:1].upper() + filename[1:].replace("-", " ")
+    elif info["title_mode"] == "original":
+        c_title = filename.replace("-", " ")
+    elif info["title_mode"] == "jaden_smith":
+        c_title = filename.replace("-", " ").title()
+
     full = {"content": content, "file": filename, "date": f_date, "title": c_title}
     posts.append(full) # add post to list of posts
 
