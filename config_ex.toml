@@ -6,7 +6,7 @@ author = "me"
 contact = "me@tfwno.gf"
 footer = "Built with <a href=\"https://github.com/underr/yasbe\">YASBE</a>"
 # Title mode: how to display title; available options:
-# jaden_smith: show Titles Like This
+# jaden_smith: Show Titles Like This
 # first_only: capitalize the first word
 # original: display exactly like the original filename
 title_mode = "first_only"
