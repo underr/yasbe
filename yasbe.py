@@ -17,6 +17,7 @@ except Exception as e:
 posts = []
 info = config["info"]
 
+# read files, title and posts content
 files = glob('./posts/*.md')
 for fiel in files:
     content = open(fiel).read()
@@ -42,13 +43,13 @@ if len(posts) < 1:
 try:
     shutil.rmtree('./www/') # clean files on www directory
 except Exception as e:
-    pass
-# create necessary folders and copy assets
+    pass # there's no www folder, move on
+
 os.mkdir("./www")
 os.mkdir("./www/static")
 dir_util.copy_tree("./static/", "./www/static")
 
-# homepage creation
+# create homepage
 sorted_posts = sorted(posts, key=itemgetter('date'), reverse=True) # sort by date
 template = Template(filename='./tmpl/homepage.html')
 rendered = template.render(info=info, posts=sorted_posts)
@@ -56,7 +57,7 @@ rendered = template.render(info=info, posts=sorted_posts)
 with codecs.open("./www/index.html", "w", "utf-8-sig") as temp:
     temp.write(rendered)
 
-# post creation
+# create posts
 for post in posts:
     pre = markdown(post["content"]) # preprocessed markdown
     p_path = './www/' + post["file"]
