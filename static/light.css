@@ -6,20 +6,6 @@ a:focus, a:hover {
   text-decoration: underline;
   color: #C98989; }
 
-#title {
-  color: #444; }
-
-#quote {
-  margin: 0px;
-  margin-bottom: 10px;
-  margin-left: 25px;
-  font-size: 12pt;
-  padding: 0px; }
-
-h1, h2 {
-  margin-bottom: 0px;
-  padding-bottom: 0px; }
-
 body {
   margin: 40px auto;
   max-width: 650px;
@@ -27,10 +13,6 @@ body {
   font-size: 18px;
   color: #444;
   padding: 0 10px }
-
-footer {
-  font-size: 12pt;
-  margin-top: 15px; }
 
 code {
   padding: .2rem .5rem;
@@ -44,3 +26,21 @@ pre > code {
   display: block;
   padding: 1rem 1.5rem;
   white-space: pre; }
+
+footer {
+  font-size: 12pt;
+  margin-top: 15px; }
+
+h1, h2 {
+  margin-bottom: 0px;
+  padding-bottom: 0px; }
+
+#title {
+  color: #444; }
+
+#quote {
+  margin: 0px;
+  margin-bottom: 10px;
+  margin-left: 25px;
+  font-size: 12pt;
+  padding: 0px; }
