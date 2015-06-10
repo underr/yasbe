@@ -34,8 +34,7 @@ for fiel in files:
     elif info["title_mode"] == "jaden_smith":
         c_title = filename.replace("-", " ").title()
 
-    full = {"content": content, "file": filename, "date": f_date, "title": c_title}
-    posts.append(full) # add post to list of posts
+    posts.append({"content": content, "file": filename, "date": f_date, "title": c_title})
 
 if len(posts) < 1:
     print('WARNING: no posts found.')
