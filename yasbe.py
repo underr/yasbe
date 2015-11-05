@@ -14,6 +14,8 @@ except Exception as e:
     with open("config.toml") as cc:
         config = toml.loads(cc.read())
 
+print(config)
+
 posts = []
 info = config["info"]
 
@@ -50,6 +52,10 @@ dir_util.copy_tree("./static/", "./www/static")
 
 # create homepage
 sorted_posts = sorted(posts, key=itemgetter('date'), reverse=True) # sort by date
+if info["tmpl_home"] == 'default':
+  template = Template(filename='./tmpl/homepage.html')
+else:
+  template = Template(filename='./tmpl/' + info["tmpl_home"] + '.html')
 template = Template(filename='./tmpl/homepage.html')
 rendered = template.render(info=info, posts=sorted_posts)
 
@@ -61,7 +67,10 @@ for post in posts:
     pre = markdown(post["content"]) # preprocessed markdown
     p_path = './www/' + post["file"]
     os.mkdir(p_path)
-    template = Template(filename='./tmpl/post.html') # an Mako's Template object
+    if info["tmpl_posts"] == 'default':
+      template = Template(filename='./tmpl/post.html')
+    else:
+      template = Template(filename='./tmpl/' + info["tmpl_posts"] + '.html')
     rendered = template.render(content=pre, post=post, info=info) # a rendered post
     # write post
     with codecs.open(p_path + "/index.html", "w", "utf-8-sig") as temp:
