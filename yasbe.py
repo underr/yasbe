@@ -14,8 +14,6 @@ except Exception as e:
     with open("config.toml") as cc:
         config = toml.loads(cc.read())
 
-print(config)
-
 posts = []
 info = config["info"]
 
