@@ -54,7 +54,6 @@ if info["tmpl_home"] == 'default':
   template = Template(filename='./tmpl/homepage.html')
 else:
   template = Template(filename='./tmpl/' + info["tmpl_home"] + '.html')
-template = Template(filename='./tmpl/homepage.html')
 rendered = template.render(info=info, posts=sorted_posts)
 
 with codecs.open("./www/index.html", "w", "utf-8-sig") as temp:
