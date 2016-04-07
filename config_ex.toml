@@ -10,5 +10,6 @@ footer = "Built with <a href=\"https://github.com/underr/yasbe\">YASBE</a>"
 # Title mode: how to display title; available options:
 # jaden_smith: Show Titles Like This
 # first_only: capitalize the first word
+# lowercase: like this
 # original: display exactly like the original filename
 title_mode = "first_only"

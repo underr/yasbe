@@ -31,6 +31,8 @@ for fiel in files:
         c_title = filename[:1].upper() + filename[1:].replace("-", " ")
     elif info["title_mode"] == "original":
         c_title = filename.replace("-", " ")
+    elif info["title_mode"] == "lowercase":
+        c_title = filename.lower()
     elif info["title_mode"] == "jaden_smith":
         c_title = filename.replace("-", " ").title()
 
