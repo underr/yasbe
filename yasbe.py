@@ -1,6 +1,5 @@
-import toml, os, codecs, shutil
+import toml, os, codecs, shutil, mistune
 from operator import itemgetter
-from mistune import markdown
 from distutils import dir_util
 from glob import glob
 from mako.template import Template
@@ -16,6 +15,10 @@ except Exception as e:
 
 posts = []
 info = config["info"]
+renderer = mistune.Renderer(
+        parse_block_html=config['info']['parse_html'],
+        parse_inline_html=config['info']['parse_html'])
+markdown = mistune.Markdown(renderer=renderer)
 
 # read files, title and posts content
 files = glob('./posts/*.md')

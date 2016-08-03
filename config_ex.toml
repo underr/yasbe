@@ -13,3 +13,4 @@ footer = "Built with <a href=\"https://github.com/underr/yasbe\">YASBE</a>"
 # lowercase: like this
 # original: display exactly like the original filename
 title_mode = "first_only"
+parse_html = false
