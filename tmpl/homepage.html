@@ -10,7 +10,11 @@
 <div id="quote"><i>${info["description"]}</i></div>
 <br>
 % for post in posts:
+    <%
+        resumo = post["content"].split(' ')
+    %>
     <b>>> </b><a href="/${post["file"]}/">${post["title"]}</a><span> &middot; ${post["date"]}</span><br>
+    <p>${' '.join(resumo[:20])}</p> <b>...</b>
 % endfor
 </body>
 </html>
